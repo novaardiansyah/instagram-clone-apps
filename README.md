@@ -31,16 +31,16 @@ it may take longer to demonstrate the website the first time, please be patient 
   <a href="#" target="_blank">
     <img src="https://img.shields.io/badge/stages-development-informational">
   </a>
-  <a href="https://github.com/novaardiansyah/instagram-clone-apps/blob/instagram-clone-apps/references.json" target="_blank">
+  <a href="https://github.com/novaardiansyah/instagram-clone-apps/blob/instagram-clone-v1/references.json" target="_blank">
     <img src="https://img.shields.io/badge/information-references-informational">
   </a>
   <a href="#" target="_blank">
     <img src="https://img.shields.io/github/repo-size/novaardiansyah/instagram-clone-apps?label=size&color=informational" />
   </a>
-  <a href="https://github.com/novaardiansyah/instagram-clone-apps/blob/instagram-clone-apps/LICENSE" target="_blank">
+  <a href="https://github.com/novaardiansyah/instagram-clone-apps/blob/instagram-clone-v1/LICENSE" target="_blank">
     <img src="https://img.shields.io/github/license/novaardiansyah/instagram-clone-apps?label=license&color=informational" />
   </a>
-  <a href="https://github.com/novaardiansyah/instagram-clone-apps/commits/instagram-clone-apps" target="_blank">
-    <img src="https://img.shields.io/github/last-commit/novaardiansyah/instagram-clone-apps/instagram-clone-apps?color=informational" />
+  <a href="https://github.com/novaardiansyah/instagram-clone-apps/commits/instagram-clone-v1" target="_blank">
+    <img src="https://img.shields.io/github/last-commit/novaardiansyah/instagram-clone-apps/instagram-clone-v1?color=informational" />
   </a>
 </p>
