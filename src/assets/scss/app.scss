@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use 'partials/variables'as v;
+@use 'partials/mixin' as m;
+
+@include m.google-fonts();
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 1.8rem;
+}
+
+body {
+  /* @include m.darkTheme(); */
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
