@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "instagram-clone-v1-f1859",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
