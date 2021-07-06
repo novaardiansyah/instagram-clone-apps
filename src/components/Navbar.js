@@ -1,5 +1,6 @@
 import React from 'react'
 import '../assets/scss/components/Navbar.scss'
+
 // images
 import defaultProfile from '../assets/images/default-profile.png'
 import instagramTextLogo from '../assets/images/instagram_text_logo.png'

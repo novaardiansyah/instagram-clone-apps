@@ -1,0 +1,10 @@
+.posts {
+  border: 1px solid lightgray;
+  
+  &__body-image {
+    width: 100%;
+    object-fit: contain;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+  }
+}

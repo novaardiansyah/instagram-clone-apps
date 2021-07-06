@@ -1,9 +1,13 @@
 import React from 'react'
 // components
-import Navbar from './Navbar'
+import Posts from './Posts'
 
 export default function Home() {
   return (
-    <Navbar />
+    <div class="container">
+      <div class="row justify-content-center">
+        <Posts />
+      </div>
+    </div>
   )
 }
