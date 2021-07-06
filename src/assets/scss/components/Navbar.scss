@@ -1,0 +1,9 @@
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid lightgray;
+  
+  &__brand-image {
+    object-fit: contain;
+    width: 120px;
+  }
+}
