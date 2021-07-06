@@ -4,9 +4,9 @@ import '../../assets/scss/components/posts/index.scss'
 // images
 import defaultProfile from '../../assets/images/default-profile.png'
 
-export default function Posts() {
+export default function Posts({ username, imageUrl, captions }) {
   return (
-    <div className="posts col-md-10 col-lg-8 mt-3">
+    <div className="posts col-md-8 col-lg-6 mb-3">
       <div className="posts__header d-flex flex-row pt-3">
         <img
           className="posts__header-avatar rounded-circle me-2"
@@ -16,18 +16,18 @@ export default function Posts() {
           height="32"
         />
 
-        <p className="posts__header-username">Nova Ardiansyah</p>
+        <p className="posts__header-username">{ username }</p>
       </div>
       <div className="posts__body">
         <img
           className="posts__body-image"
-          src="https://source.unsplash.com/kZ1zThg6G40/640x426/"
+          src={ imageUrl }
           alt=""
         />
         
-        <p className="posts__body-desc">
-          <span className="fw-bold">Nova Ardiansyah:&nbsp;</span>
-          Lorem ipsum dolor sit amet.
+        <p className="posts__body-desc mt-2">
+          <span className="fw-bold">{ username }:&nbsp;</span>
+          { captions }
         </p>
       </div>
     </div>
