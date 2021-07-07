@@ -1,33 +1,30 @@
 import React from 'react'
-import '../../assets/scss/components/posts/index.scss'
+import './scss/index.scss'
 
-// images
-import defaultProfile from '../../assets/images/default-profile.png'
-
-export default function Posts({ username, imageUrl, captions }) {
+export default function Posts({ username, imageUrl, profileUrl, caption }) {
   return (
-    <div className="posts col-md-8 col-lg-6 mb-3">
-      <div className="posts__header d-flex flex-row pt-3">
+    <div className="post col-md-8 col-lg-6 mb-3">
+      <div className="post__header d-flex flex-row pt-3">
         <img
-          className="posts__header-avatar rounded-circle me-2"
-          src={defaultProfile}
+          className="post__header-avatar rounded-circle me-2"
+          src={ profileUrl }
           alt="default profile"
           width="32"
           height="32"
         />
 
-        <p className="posts__header-username">{ username }</p>
+        <p className="post__header-username">{ username }</p>
       </div>
-      <div className="posts__body">
+      <div className="post__body">
         <img
-          className="posts__body-image"
+          className="post__body-image"
           src={ imageUrl }
           alt=""
         />
         
-        <p className="posts__body-desc mt-2">
+        <p className="post__body-desc mt-2">
           <span className="fw-bold">{ username }:&nbsp;</span>
-          { captions }
+          { caption }
         </p>
       </div>
     </div>

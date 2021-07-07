@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/scss/components/Navbar.scss'
+import './scss/Navbar.scss'
 
 // images
 import defaultProfile from '../assets/images/default-profile.png'
