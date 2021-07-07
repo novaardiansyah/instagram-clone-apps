@@ -1,13 +1,13 @@
 import React from 'react'
 import './scss/index.scss'
 
-export default function Posts({ username, imageUrl, profileUrl, caption }) {
+export default function Posts({ username, images, caption }) {
   return (
     <div className="post col-md-8 col-lg-6 mb-3">
       <div className="post__header d-flex flex-row pt-3">
         <img
           className="post__header-avatar rounded-circle me-2"
-          src={ profileUrl }
+          src="https://source.unsplash.com/427x427/?kids,boys"
           alt="default profile"
           width="32"
           height="32"
@@ -18,7 +18,7 @@ export default function Posts({ username, imageUrl, profileUrl, caption }) {
       <div className="post__body">
         <img
           className="post__body-image"
-          src={ imageUrl }
+          src={ images }
           alt=""
         />
         

@@ -1,42 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+// import firebase from 'firebase'
+import { cloudFirestore, PREFIX } from '../firebase/firebaseConfig'
 
 // components
 import Posts from './Posts'
 
 export default function Home() {
-  const [posts, setPosts] = useState([
-    {
-      username: `user_${Math.floor(Math.random() * 100)}`,
-      imageUrl: 'https://source.unsplash.com/640x426/?girls',
-      profileUrl: 'https://source.unsplash.com/426x426/?boys',
-      caption:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, ex excepturi architecto minus ipsa quasi.',
-    },
-    {
-      username: `user_${Math.floor(Math.random() * 100)}`,
-      imageUrl: 'https://source.unsplash.com/640x426/?boys',
-      profileUrl: 'https://source.unsplash.com/426x426/?girls',
-      caption:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, ex excepturi architecto minus ipsa quasi.',
-    },
-    {
-      username: `user_${Math.floor(Math.random() * 100)}`,
-      imageUrl: 'https://source.unsplash.com/640x426/?fashion',
-      profileUrl: 'https://source.unsplash.com/426x426/?woman,man',
-      caption:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, ex excepturi architecto minus ipsa quasi.',
-    },
-  ])
+  const [posts, setPosts] = useState([])
 
+  useEffect(() => {
+    cloudFirestore
+      .collection(PREFIX + 'posts')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => {
+            const { username, images, caption, timestamp } = doc.data()
+
+            return {
+              id: doc.id,
+              username,
+              images,
+              caption,
+              timestamp,
+            }
+          })
+        )
+      })
+  }, [setPosts])
+  
   return (
     <div className="container">
       <div className="row mt-3 justify-content-center">
         {posts.map((post) => (
           <Posts
-            username={post.username}
-            imageUrl={post.imageUrl}
-            profileUrl={post.profileUrl}
-            caption={post.caption}
+            key={post?.id}
+            username={post?.username}
+            images={post?.images}
+            caption={post?.caption}
           />
         ))}
       </div>
