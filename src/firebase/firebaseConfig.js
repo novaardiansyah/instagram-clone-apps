@@ -15,4 +15,4 @@ const cloudFirestore = firebaseApp.firestore()
 const auth           = firebase.auth()
 const storage        = firebase.storage
 
-export { cloudFirestore, auth, storage, PREFIX }
+export { PREFIX, cloudFirestore, auth, storage }
