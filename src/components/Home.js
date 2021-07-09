@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { cloudFirestore, PREFIX } from '../firebase/firebaseConfig'
 
 // components
-import Posts from './Posts'
+import Posts from './posts'
 
 export default function Home() {
   const [posts, setPosts] = useState([])
@@ -13,28 +13,18 @@ export default function Home() {
       .collection(PREFIX + 'posts')
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => {
-            const { username, images, caption, timestamp } = doc.data()
-
-            return {
-              id: doc.id,
-              username,
-              images,
-              caption,
-              timestamp,
-            }
-          })
-        )
+        setPosts(snapshot.docs.map((doc) => {
+          return { id: doc.id, post: doc.data() }
+        }))
       })
   }, [setPosts])
   
   return (
     <div className="container">
       <div className="row mt-3 justify-content-center">
-        {posts.map((post) => (
+        {posts.map(({id, post}) => (
           <Posts
-            key={post?.id}
+            key={id}
             username={post?.username}
             images={post?.images}
             caption={post?.caption}
