@@ -3,6 +3,7 @@ import React from 'react'
 // card
 import CardAuth from './card/CardAuth'
 import CardHeader from './card/CardHeader'
+import CardFooter from './card/CardFooter'
 
 export default function Register() {
   return (
@@ -28,11 +29,13 @@ export default function Register() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mb-3">
           <i className="fa fa-fw fa-paper-plane"></i>
           register
         </button>
       </form>
+      
+      <CardFooter text="already have an account?" btnText="login here" btnUrl="/auth/login" />
     </CardAuth>
   )
 }
