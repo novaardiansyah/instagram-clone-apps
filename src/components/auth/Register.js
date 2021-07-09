@@ -2,13 +2,16 @@ import React, { useState, useRef, useEffect } from 'react'
 import { auth } from '../../firebase/firebaseConfig'
 import './scss/auth.scss'
 
+// contexts
+import { useUser } from '../../contexts/UserProvider'
+
 // card
 import CardAuth from './card/CardAuth'
 import CardHeader from './card/CardHeader'
 import CardFooter from './card/CardFooter'
 
 export default function Register() {
-  const [user, setUser] = useState(null)
+  const { setUser } = useUser()
   const [errorMessage, setErrorMessage] = useState(null)
 
   const usernameRef = useRef()
@@ -17,12 +20,14 @@ export default function Register() {
   const confirmPasswordRef = useRef()
 
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) return setUser(authUser)
 
       return setUser(null)
     })
-  }, [])
+
+    return () => unsubscribe()
+  }, [setUser])
 
   const handleRegister = (e) => {
     e.preventDefault()
@@ -45,15 +50,19 @@ export default function Register() {
         passwordRef.current.value
       )
       .then((authUser) => {
+        authUser.user.updateProfile({
+          displayName: usernameRef.current.value,
+        })
+
+        console.log('successfully registered a new account', authUser)
+
         return setErrorMessage(null)
       })
       .catch((error) => {
         return setErrorMessage(error?.message)
       })
   }
-  
-  console.log(user)
-  
+
   return (
     <div className="container auth">
       <div className="row justify-content-center">
