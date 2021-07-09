@@ -1,4 +1,9 @@
 {
   "related-information": {},
-  "search-information": []
+  "search-information": [
+    {
+      "title": "Netlify renders 404 on page refresh (using React and react-router)",
+      "url": "https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router"
+    }
+  ]
 }
