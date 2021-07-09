@@ -13,9 +13,15 @@ export default function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={ Home } />
-        <Route exact path="/auth/login" component={ Login } />
-        <Route exact path="/auth/register" component={ Register } />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/auth/login">
+          <Login />
+        </Route>
+        <Route exact path="/auth/register">
+          <Register />
+        </Route>
       </Switch>
     </Router>
   )
