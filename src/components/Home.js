@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { cloudFirestore, PREFIX } from '../firebase/firebaseConfig'
 
 // components
-import Posts from './posts'
+import PostList from './posts/PostList'
 
 export default function Home() {
   const [posts, setPosts] = useState([])
@@ -23,7 +23,7 @@ export default function Home() {
     <div className="container">
       <div className="row mt-3 justify-content-center">
         {posts.map(({id, post}) => (
-          <Posts
+          <PostList
             key={id}
             username={post?.username}
             images={post?.images}
