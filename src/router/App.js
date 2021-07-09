@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // components
 import Navbar from '../components/Navbar'
@@ -14,9 +14,8 @@ export default function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={ Home } />
-        <Route path="/auth/login" component={ Login } />
-        <Route path="/auth/register" component={ Register } />
-        <Redirect path="*" to="/auth/login" />
+        <Route exact path="/auth/login" component={ Login } />
+        <Route exact path="/auth/register" component={ Register } />
       </Switch>
     </Router>
   )
