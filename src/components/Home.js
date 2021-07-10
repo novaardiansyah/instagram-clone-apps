@@ -4,11 +4,9 @@ import { useHistory } from 'react-router-dom'
 // firebase
 import { cloudFirestore, auth, PREFIX } from '../firebase/firebaseConfig'
 
-// components
+// components/posts
 import PostList from './posts/PostList'
-
-// contexts
-// import { useUser } from '../contexts/UserProvider'
+import ImageUpload from './posts/ImageUpload'
 
 export default function Home() {
   const [posts, setPosts] = useState([])
@@ -36,11 +34,15 @@ export default function Home() {
   return (
     <div className="container">
       <div className="row mt-3 justify-content-center">
-        <div className="col-md-8 col-lg-6 text-end">
+        <div className="col-md-8 col-lg-6 text-end mb-3">
           <button className="btn btn-secondary" onClick={handleLogout}>
             <i className="fa fa-fw fa-sign-out-alt"></i>
             Logout
           </button>
+        </div>
+        
+        <div className="col-md-8 col-lg-6">
+          <ImageUpload />
         </div>
       </div>
 
