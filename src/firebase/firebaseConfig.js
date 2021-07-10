@@ -13,6 +13,6 @@ const firebaseApp = firebase.initializeApp({
 const PREFIX         = 'instagram-clone-v1__'
 const cloudFirestore = firebaseApp.firestore()
 const auth           = firebase.auth()
-const storage        = firebase.storage
+const storage        = firebase.storage()
 
 export { PREFIX, cloudFirestore, auth, storage }
