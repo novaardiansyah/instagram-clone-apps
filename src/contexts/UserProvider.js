@@ -5,11 +5,27 @@ const UserContext = React.createContext()
 
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null)
-  
+  const [errorMessage, setErrorMessage] = useState(null)
+
   const value = {
     user,
-    setUser
+    setUser,
+    errorMessage,
+    setErrorMessage
   }
+  
+  useEffect(() => {
+    let clearErrorMessage;
+    
+    if (errorMessage) {
+      clearErrorMessage = 
+        setTimeout(function() {
+          setErrorMessage(null)
+        }, 4000);
+      
+      return () => clearTimeout(clearErrorMessage)
+    }
+  }, [errorMessage])
   
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
