@@ -3,7 +3,11 @@
   "search-information": [
     {
       "title": "Netlify renders 404 on page refresh (using React and react-router)",
-      "url": "https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router"
+      "url": "https://bit.ly/3e3PzbA"
+    },
+    {
+      "title": "Programmatic Navigation in React using react-router-dom",
+      "url": "https://bit.ly/3htc8bD"
     }
   ]
 }

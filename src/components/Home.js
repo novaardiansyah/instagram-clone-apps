@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 // firebase
 import { cloudFirestore, auth, PREFIX } from '../firebase/firebaseConfig'
@@ -11,7 +12,9 @@ import PostList from './posts/PostList'
 
 export default function Home() {
   const [posts, setPosts] = useState([])
-
+  
+  const history = useHistory()
+  
   useEffect(() => {
     cloudFirestore
       .collection(PREFIX + 'posts')
@@ -24,12 +27,17 @@ export default function Home() {
         )
       })
   }, [setPosts])
-
+  
+  const handleLogout = () => {
+    auth.signOut()
+    return history.push('/auth/login')
+  }
+  
   return (
     <div className="container">
       <div className="row mt-3 justify-content-center">
-        <div className="col-md-8 col-lg-6 mb-3">
-          <button className="btn btn-secondary" onClick={() => auth.signOut()}>
+        <div className="col-md-8 col-lg-6 text-end">
+          <button className="btn btn-secondary" onClick={handleLogout}>
             <i className="fa fa-fw fa-sign-out-alt"></i>
             Logout
           </button>
