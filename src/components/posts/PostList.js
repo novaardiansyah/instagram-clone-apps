@@ -3,7 +3,7 @@ import './scss/PostList.scss'
 
 export default function PostList({ username, images, caption }) {
   return (
-    <div className="post col-md-8 col-lg-6 mb-3">
+    <div className="post col-lg-6 mb-3">
       <div className="post__header d-flex flex-row pt-3">
         <img
           className="post__header-avatar rounded-circle me-2"

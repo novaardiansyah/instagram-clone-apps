@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 
 // firebase
-import { cloudFirestore, auth, PREFIX } from '../firebase/firebaseConfig'
+import { cloudFirestore, PREFIX } from '../firebase/firebaseConfig'
 
 // components/posts
 import PostList from './posts/PostList'
-import ImageUpload from './posts/ImageUpload'
+import CreatePosts from './posts/CreatePosts'
+
+// components
+import Navbar from './Navbar'
+
+// contexts
+import { useUser } from '../contexts/UserProvider'
 
 export default function Home() {
   const [posts, setPosts] = useState([])
   
-  const history = useHistory()
+  const { toggleAddPost, user } = useUser()
   
   useEffect(() => {
     cloudFirestore
@@ -25,37 +30,35 @@ export default function Home() {
         )
       })
   }, [setPosts])
-  
-  const handleLogout = () => {
-    auth.signOut()
-    return history.push('/auth/login')
-  }
-  
-  return (
-    <div className="container">
-      <div className="row mt-3 justify-content-center">
-        <div className="col-md-8 col-lg-6 text-end mb-3">
-          <button className="btn btn-secondary" onClick={handleLogout}>
-            <i className="fa fa-fw fa-sign-out-alt"></i>
-            Logout
-          </button>
-        </div>
-        
-        <div className="col-md-8 col-lg-6">
-          <ImageUpload />
-        </div>
-      </div>
 
-      <div className="row mt-3 justify-content-center">
-        {posts.map(({ id, post }) => (
-          <PostList
-            key={id}
-            username={post?.username}
-            images={post?.images}
-            caption={post?.caption}
-          />
-        ))}
+  return (
+    <>
+      <Navbar />
+      <div className="container">
+
+        <div className="row mt-3 justify-content-center">
+          {
+            toggleAddPost && user && (
+              <div className="col-md-6 mb-3">
+                <CreatePosts />
+              </div>
+            )
+          }
+          
+          <div className={`${toggleAddPost ? 'col-md-6' : 'col-md-8'}`}>
+            <div className="row justify-content-center">
+              {posts.map(({ id, post }) => (
+                <PostList
+                  key={id}
+                  username={post?.username}
+                  images={post?.images}
+                  caption={post?.caption}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

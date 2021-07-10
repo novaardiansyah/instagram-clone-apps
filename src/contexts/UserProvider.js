@@ -6,12 +6,15 @@ const UserContext = React.createContext()
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+  const [toggleAddPost, setToggleAddPost] = useState(false)
 
   const value = {
     user,
     setUser,
     errorMessage,
-    setErrorMessage
+    setErrorMessage,
+    toggleAddPost,
+    setToggleAddPost
   }
   
   useEffect(() => {

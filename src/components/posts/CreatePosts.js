@@ -7,14 +7,13 @@ import { storage, cloudFirestore, PREFIX } from '../../firebase/firebaseConfig'
 // contexts
 import { useUser } from '../../contexts/UserProvider'
 
-export default function ImageUpload() {
+export default function CreatePosts() {
   const [image, setImage] = useState('')
   const [progress, setProgress] = useState(0)
 
-  const { user } = useUser()
+  const { user, setToggleAddPost } = useUser()
 
   const captionRef = useRef()
-  const imageRef = useRef()
 
   const handleUpload = (e) => {
     e.preventDefault()
@@ -47,12 +46,8 @@ export default function ImageUpload() {
               images: url,
               username: user?.displayName,
             })
-
-            // reset form
-            captionRef.current.value = ''
-            setImage(null)
-            imageRef.current.value = ''
-            setProgress(0)
+            
+            setToggleAddPost(false)
           })
       }
     )
@@ -93,7 +88,6 @@ export default function ImageUpload() {
               onChange={handleChooseImage}
               id="image"
               className="form-control"
-              ref={imageRef}
             />
           </div>
 
