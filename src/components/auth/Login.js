@@ -75,11 +75,11 @@ export default function Login() {
         </button>
       </form>
 
-      <CardFooter
+      {/*<CardFooter
         text="don't have an account?"
         btnText="sign up here"
         btnUrl="/auth/register"
-      />
+      />*/}
     </CardAuth>
   )
 }
